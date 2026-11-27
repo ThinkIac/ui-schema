@@ -1,5 +1,6 @@
 <script>
   import { onMount } from 'svelte';
+  import MalteseSurface from './MalteseSurface.svelte';
   import ProvidersSurface from './ProvidersSurface.svelte';
   import SessionsSurface from './SessionsSurface.svelte';
   import McpSurface from './McpSurface.svelte';
@@ -160,6 +161,8 @@
   <InfiniGateCredentialsSurface {surface} {state} {actionUrl} />
 {:else if surface?.kind === 'elevenlabs-integration'}
   <ElevenLabsIntegrationSurface {surface} {state} {actionUrl} />
+{:else if surface?.kind === 'maltese-session' || surface?.kind === 'maltese-defaults'}
+  <MalteseSurface {surface} {state} {actionUrl} />
 {:else}<p class="notice error">Surface não suportada pelo renderer.</p>{/if}
 
 <style>
